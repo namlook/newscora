@@ -7,8 +7,7 @@ import routes from './routes';
 import configureStore from './store';
 
 import 'semantic-ui-css/semantic.css';
-import 'odyssee-client/src/styles/styles.scss';
-// import 'odyssee-client/lib/styles.css';
+import 'odyssee-client/styles/styles.scss';
 import './styles/styles.scss';
 
 const store = configureStore();

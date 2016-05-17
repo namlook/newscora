@@ -63,8 +63,6 @@ const color = 'violet';
 
 
 export default {
-  // stores: {
-    // participants: [
   stores: [
     {
       type: 'ordered-collection',
@@ -74,24 +72,24 @@ export default {
         name: '',
       },
     },
-    {
-      type: 'record',
-      name: 'participant-form-store',
-      schema: {
-        _id: 'string',
-        name: 'string',
-      },
-    },
     // {
     //   type: 'record',
-    //   name: 'score-form-store',
+    //   name: 'participant-form-store',
     //   schema: {
-    //     _id: '',
-    //     participant: '',
-    //     at: '',
-    //     score: '',
+    //     _id: 'string',
+    //     name: 'string',
     //   },
     // },
+    // // {
+    // //   type: 'record',
+    // //   name: 'score-form-store',
+    // //   schema: {
+    // //     _id: '',
+    // //     participant: '',
+    // //     at: '',
+    // //     score: '',
+    // //   },
+    // // },
     {
       type: 'collection',
       name: 'scores-store',
@@ -102,23 +100,23 @@ export default {
         score: '',
       },
     },
-    {
-      type: 'record',
-      name: 'score-store',
-      schema: {
-        _id: 'string',
-        participant: 'string',
-        score: 'number',
-        lap: 'number',
-      },
-    },
-    {
-      type: 'record',
-      name: 'score-search-store',
-      schema: {
-        value: 'string',
-      },
-    },
+    // {
+    //   type: 'record',
+    //   name: 'score-store',
+    //   schema: {
+    //     _id: 'string',
+    //     participant: 'string',
+    //     score: 'number',
+    //     lap: 'number',
+    //   },
+    // },
+    // {
+    //   type: 'record',
+    //   name: 'score-search-store',
+    //   schema: {
+    //     value: 'string',
+    //   },
+    // },
     // {
     //   type: 'record',
     //   name: 'score-form-store',
@@ -137,17 +135,6 @@ export default {
     //   },
     // },
   ],
-    // scores: [
-    //   {
-    //     type: 'ResourceCollectionStore',
-    //     name: 'score-records',
-    //   },
-    //   {
-    //     type: 'ScoreLocationStore',
-    //     name: 'score-location-records',
-    //   },
-    // ],
-  // },
   pages: {
     outlet: {
       path: '/',
@@ -164,12 +151,11 @@ export default {
           color,
           items: [
             { label: 'Participants', route: '/participants', icon: 'users' },
-            { label: 'Scores', route: '', items: [
-              { label: 'Saisie', route: '/scores', icon: 'game' },
-              { label: 'Hall Of Fames', route: '/scores/hall-of-fames', icon: 'trophy' },
-              { label: 'Statistics', route: '/scores/statistics', icon: 'line chart' },
+            { label: 'Scores', route: '/scores', icon: 'game' },
+            { label: 'Statistics', route: '', items: [
+              { label: 'Hall Of Fames', route: '/statistics/hall-of-fames', icon: 'trophy' },
+              { label: 'Statistics', route: '/statistics/charts', icon: 'line chart' },
             ] },
-            { label: 'Statistics', route: '/scores/stats', icon: 'chart line' },
             { label: 'Contact', route: '/contact', icon: 'user' },
           ],
         },
@@ -209,8 +195,15 @@ export default {
             { name: 'name', type: 'text', label: 'name' },
           ],
           displaySubmitButtons: true,
+          store: {
+            name: 'participant-form-store',
+            schema: {
+              _id: 'string',
+              name: 'string',
+            },
+          },
           linkedStores: {
-            own: 'participant-form-store',
+            // own: 'participant-form-store',
             collection: 'participants-store',
           },
         },
@@ -263,7 +256,6 @@ export default {
               },
             },
             linkedStores: {
-              // form: 'score-form-store',
               collection: 'scores-store',
             },
           },
@@ -284,7 +276,7 @@ export default {
               title: 'Scores',
               icon: 'cube',
               items: [
-                { label: 'show', route: '/scores/:id', icon: 'document' },
+                { label: 'back', route: '/scores', icon: 'left arrow' },
                 { label: 'edit', route: '/scores/:id/edit', icon: 'pencil' },
               ],
             },
@@ -336,27 +328,26 @@ export default {
           widgets: [
             {
               type: 'record-form',
-              // routeParamsMapping: { _id: ':id' },
-              // store: {
-              //   name: 'score-edit',
-              //   schema: {
-              //     _id: 'string',
-              //     participant: 'string',
-              //     score: 'number',
-              //     lap: 'number',
-              //   },
-              // },
               fields: [
                 { name: 'participant', type: 'search', label: 'participant' },
                 { name: 'score', type: 'number', label: 'score' },
                 { name: 'lap', type: 'number', label: 'tour' },
               ],
-              onSaveRedirectTo: '/scores/:id',
-              onCancelRedirectTo: '/scores/:id',
+              onSaveRedirectTo: '/scores',
+              onCancelRedirectTo: '/scores',
               displaySubmitButtons: true,
               linkedRouteParams: { _id: ':id' },
+              store: {
+                name: 'score-edit',
+                schema: {
+                  _id: 'string',
+                  participant: 'string',
+                  score: 'number',
+                  lap: 'number',
+                },
+              },
               linkedStores: {
-                own: 'score-store',
+                // own: 'score-store',
                 collection: 'scores-store',
               },
             },
@@ -369,9 +360,9 @@ export default {
             {
               type: 'menu',
               title: 'Scores',
-              icon: 'cubes',
+              icon: 'game',
               items: [
-                { label: 'create', route: '/scores/winner', icon: 'plus' },
+                { label: 'create', route: '/scores/i/new', icon: 'plus' },
               ],
             },
             {
@@ -390,129 +381,148 @@ export default {
               subtitle: 'Que le meilleur gagne',
               properties: ['_id', 'participant', 'score', 'lap'],
               searchProperty: 'participant',
-              onClickRedirectTo: '/scores/:id',
+              onClickRedirectTo: '/scores/:id/edit',
               linkedStores: {
                 own: 'scores-store',
               },
             },
           ],
         },
-        winner: {
-          path: 'winner(/:id)',
-          widgets: [
-            {
-              type: 'record-form',
-              fields: [
-                { name: 'value', type: 'text', label: 'search' },
-              ],
-              exposeStateToRouteQuery: {
-                value: 'participant',
-              },
-              linkedStores: {
-                own: 'score-search-store',
-              },
-            },
-            {
-              type: 'collection-list',
-              title: 'Les scores',
-              unstackable: true,
-              color: 'teal',
-              icon: 'users',
-              subtitle: 'Que le meilleur gagne',
-              properties: ['_id', 'participant', 'score', 'lap'],
-              searchProperty: 'participant',
-              onClickRedirectTo: '/scores/winner/:id',
-              linkedRouteQuery: {
-                search: 'participant',
-              },
-              linkedStores: {
-                own: 'scores-store',
-                // search: 'score-search-store',
-              },
-              // on: {
-              //   recordClicked: { action: 'update', store: 'score-store' },
-              // },
-            },
-            {
-              layout: { mobile: 8 },
-              type: 'record-display',
-              // routeParamsMapping: { _id: ':id' },
-              // store: {
-              //   name: 'score-display',
-              //   schema: {
-              //     _id: 'string',
-              //     participant: 'string',
-              //     score: 'number',
-              //     lap: 'number',
-              //   },
-              // },
-              linkedRouteParams: { _id: ':id' },
-              linkedStores: {
-                // record: {
-                //   name: 'score-store',
-                //   bootstrap: {
-                //     from: 'scores-store',
-                //     query: { filter: { _id: ':id' } },
-                //   },
-                // },
-                own: 'score-store',
-                collection: 'scores-store',
-              },
-              fields: [
-                { name: 'participant', type: 'text', label: 'participant' },
-                { name: 'score', type: 'number', label: 'score' },
-                { name: 'lap', type: 'number', label: 'tour' },
-              ],
-            },
-            {
-              layout: { mobile: 8 },
-              type: 'record-form',
-              // routeParamsMapping: { _id: ':id' },
-              // store: {
-              //   name: 'score-edit',
-              //   schema: {
-              //     _id: 'string',
-              //     participant: 'string',
-              //     score: 'number',
-              //     lap: 'number',
-              //   },
-              // },
-              fields: [
-                { name: 'participant', type: 'search', label: 'participant' },
-                { name: 'score', type: 'number', label: 'score' },
-                { name: 'lap', type: 'number', label: 'tour' },
-              ],
-              onSaveRedirectTo: '/scores/winner',
-              onCancelRedirectTo: '/scores/winner',
-              displaySubmitButtons: true,
-              linkedRouteParams: { _id: ':id' },
-              linkedStores: {
-                own: 'score-store',
-                collection: 'scores-store',
-              },
-            },
-          ],
-        },
-        hallOfFames: {
-          path: 'hall-of-fames',
-          widgets: [
-            {
-              type: 'text',
-              title: 'prochainement',
-              content: 'le hall of fame !!!',
-            },
-          ],
-        },
-        statistics: {
-          path: 'statistics',
-          widgets: [
-            {
-              type: 'text',
-              title: 'prochainement',
-              content: 'de zolis graphe ici <3',
-            },
-          ],
-        },
+        // winner: {
+        //   path: 'winner(/:id)',
+        //   widgets: [
+        //     {
+        //       type: 'record-form',
+        //       fields: [
+        //         { name: 'value', type: 'text', label: 'search' },
+        //       ],
+        //       exposeStateToRouteQuery: {
+        //         value: 'participant',
+        //       },
+        //       linkedStores: {
+        //         own: 'score-search-store',
+        //       },
+        //     },
+        //     {
+        //       type: 'collection-list',
+        //       title: 'Les scores',
+        //       unstackable: true,
+        //       color: 'teal',
+        //       icon: 'users',
+        //       subtitle: 'Que le meilleur gagne',
+        //       properties: ['_id', 'participant', 'score', 'lap'],
+        //       searchProperty: 'participant',
+        //       onClickRedirectTo: '/scores/winner/:id',
+        //       linkedRouteQuery: {
+        //         search: 'participant',
+        //       },
+        //       linkedStores: {
+        //         own: 'scores-store',
+        //         // search: 'score-search-store',
+        //       },
+        //       // on: {
+        //       //   recordClicked: { action: 'update', store: 'score-store' },
+        //       // },
+        //     },
+        //     {
+        //       layout: { mobile: 8 },
+        //       type: 'record-display',
+        //       // routeParamsMapping: { _id: ':id' },
+        //       // store: {
+        //       //   name: 'score-display',
+        //       //   schema: {
+        //       //     _id: 'string',
+        //       //     participant: 'string',
+        //       //     score: 'number',
+        //       //     lap: 'number',
+        //       //   },
+        //       // },
+        //       linkedRouteParams: { _id: ':id' },
+        //       linkedStores: {
+        //         // record: {
+        //         //   name: 'score-store',
+        //         //   bootstrap: {
+        //         //     from: 'scores-store',
+        //         //     query: { filter: { _id: ':id' } },
+        //         //   },
+        //         // },
+        //         own: 'score-store',
+        //         collection: 'scores-store',
+        //       },
+        //       fields: [
+        //         { name: 'participant', type: 'text', label: 'participant' },
+        //         { name: 'score', type: 'number', label: 'score' },
+        //         { name: 'lap', type: 'number', label: 'tour' },
+        //       ],
+        //     },
+        //     {
+        //       layout: { mobile: 8 },
+        //       type: 'record-form',
+        //       // routeParamsMapping: { _id: ':id' },
+        //       // store: {
+        //       //   name: 'score-edit',
+        //       //   schema: {
+        //       //     _id: 'string',
+        //       //     participant: 'string',
+        //       //     score: 'number',
+        //       //     lap: 'number',
+        //       //   },
+        //       // },
+        //       fields: [
+        //         { name: 'participant', type: 'search', label: 'participant' },
+        //         { name: 'score', type: 'number', label: 'score' },
+        //         { name: 'lap', type: 'number', label: 'tour' },
+        //       ],
+        //       onSaveRedirectTo: '/scores/winner',
+        //       onCancelRedirectTo: '/scores/winner',
+        //       displaySubmitButtons: true,
+        //       linkedRouteParams: { _id: ':id' },
+        //       linkedStores: {
+        //         own: 'score-store',
+        //         collection: 'scores-store',
+        //       },
+        //     },
+        //   ],
+        // },
+      },
+    },
+    statistics: {
+      outlet: {
+        path: 'statistics',
+        widgets: [
+          {
+            type: 'menu',
+            title: 'Stats',
+            icon: 'line charts',
+            items: [
+              { label: 'hall of fames', route: '/statistics/hall-of-fames', icon: 'trophy' },
+              { label: 'charts', route: '/statistics/charts', icon: 'line chart' },
+            ],
+          },
+          {
+            type: 'outlet',
+          },
+        ],
+      },
+      hallOfFames: {
+        path: 'hall-of-fames',
+        widgets: [
+          {
+            type: 'text',
+            title: 'prochainement',
+            content: 'le hall of fame !!!',
+          },
+        ],
+      },
+      charts: {
+        path: 'charts',
+        widgets: [
+          {
+            type: 'text',
+            title: 'prochainement',
+            content: 'de zolis graphe ici <3',
+          },
+        ],
       },
     },
     contact: {

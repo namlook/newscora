@@ -1,12 +1,11 @@
 
-import * as OrderedCollectionStore from 'odyssee-client/lib/businessLogic/OrderedCollectionStore';
-import * as CollectionStore from 'odyssee-client/lib/businessLogic/CollectionStore';
-import * as RecordStore from 'odyssee-client/lib/businessLogic/RecordStore';
+import * as OrderedCollectionStore from 'odyssee-client/lib/stores/OrderedCollectionStore';
+import * as CollectionStore from 'odyssee-client/lib/stores/CollectionStore';
+import * as RecordStore from 'odyssee-client/lib/stores/RecordStore';
 
-import * as RecordFormWidget from 'odyssee-client/lib/businessLogic/RecordFormWidget';
-import * as RecordDisplayWidget from 'odyssee-client/lib/businessLogic/RecordDisplayWidget';
-import * as FormSubmitWidget from 'odyssee-client/lib/businessLogic/FormSubmitWidget';
-import * as CollectionListWidget from 'odyssee-client/lib/businessLogic/CollectionListWidget';
+import * as RecordFormWidget from 'odyssee-client/lib/components/contrib/RecordFormWidget';
+import * as RecordDisplayWidget from 'odyssee-client/lib/components/contrib/RecordDisplayWidget';
+import * as CollectionListWidget from 'odyssee-client/lib/components/contrib/CollectionListWidget';
 
 
 import * as ScoreFormWidget from 'odyssee-client/lib/businessLogic/ScoreFormWidget';
@@ -14,19 +13,23 @@ import * as NewRecordWidget from 'odyssee-client/lib/businessLogic/NewRecordWidg
 import * as ParticipantsEditWidget from 'odyssee-client/lib/businessLogic/ParticipantsEditWidget';
 import * as WeatherCheckWidget from 'odyssee-client/lib/businessLogic/WeatherCheckWidget';
 import * as AreWeOpenWidget from 'odyssee-client/lib/businessLogic/AreWeOpenWidget';
+// import * as FormSubmitWidget from 'odyssee-client/lib/components/contrib/FormSubmitWidget';
 
-import Outlet from 'odyssee-client/lib/core/components/Outlet';
-import TextWidget from 'odyssee-client/lib/core/components/widgets/TextWidget';
-import ApplicationMenuWidget from
-  'odyssee-client/lib/core/components/widgets/ApplicationMenuWidget';
+import OutletWidget from 'odyssee-client/lib/components/widgets/OutletWidget';
+import TextWidget from 'odyssee-client/lib/components/widgets/TextWidget';
+import ApplicationMenuWidget from 'odyssee-client/lib/components/widgets/ApplicationMenuWidget';
 import MobileApplicationMenuWidget
-  from 'odyssee-client/lib/core/components/widgets/MobileApplicationMenuWidget';
-import ApplicationNavbarWidget from
-  'odyssee-client/lib/core/components/widgets/ApplicationNavbarWidget';
-import MenuWidget from 'odyssee-client/lib/core/components/widgets/MenuWidget';
-import HeaderWidget from 'odyssee-client/lib/core/components/widgets/HeaderWidget';
+  from 'odyssee-client/lib/components/widgets/MobileApplicationMenuWidget';
+import ApplicationNavbarWidget from 'odyssee-client/lib/components/widgets/ApplicationNavbarWidget';
+import MenuWidget from 'odyssee-client/lib/components/widgets/MenuWidget';
+import HeaderWidget from 'odyssee-client/lib/components/widgets/HeaderWidget';
 
-import NotFoundWidget from 'odyssee-client/lib/core/components/contrib/NotFoundWidget';
+import NotFoundWidget from 'odyssee-client/lib/components/contrib/NotFoundWidget';
+
+
+import * as HallOfFameWidget from './components/HallOfFameWidget';
+import * as ChartWidget from './components/ChartWidget';
+
 
 export default {
   stores: {
@@ -35,19 +38,22 @@ export default {
     RecordStore,
   },
   widgets: {
+    HallOfFameWidget,
+    ChartWidget,
+
     RecordFormWidget,
     RecordDisplayWidget,
 
     ScoreFormWidget,
     // ScoreCollectionNavbarWidget,
     NewRecordWidget,
-    FormSubmitWidget,
+    // FormSubmitWidget,
     ParticipantsEditWidget,
     WeatherCheckWidget,
     AreWeOpenWidget,
     CollectionListWidget,
 
-    OutletWidget: { Component: Outlet },
+    OutletWidget: { Component: OutletWidget },
     TextWidget: { Component: TextWidget },
     HeaderWidget: { Component: HeaderWidget },
     MobileApplicationMenuWidget: { Component: MobileApplicationMenuWidget },
