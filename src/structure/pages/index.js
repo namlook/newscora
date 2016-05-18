@@ -6,6 +6,9 @@ import statistics from './statistics';
 
 export default {
   outlet,
+  index: {
+    redirect: '/participants',
+  },
   participants,
   scores,
   statistics,
