@@ -3,6 +3,7 @@ export default {
   path: 'statistics',
   widgets: [
     {
+      layout: { mobile: 0, tablet: 0, computer: 16 },
       type: 'menu',
       title: 'Stats',
       icon: 'line charts',

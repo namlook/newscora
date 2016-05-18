@@ -9,6 +9,21 @@ export default {
       type: 'application-navbar',
       title: 'Scora',
       color,
+      secondaryItems: [
+        {
+          action: 'deleteAll',
+          store: 'scores',
+          color: 'red',
+          confirm: {
+            displayIcon: 'trash',
+            confirmIcon: 'check',
+            confirmLabel: 'confirmer',
+          },
+        },
+      ],
+      linkedStores: {
+        scores: 'scores-store',
+      },
     },
     {
       layout: { mobile: 0, tablet: 0, computer: 3 },
