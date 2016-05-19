@@ -44,6 +44,7 @@
     "webpack-hot-middleware": "^2.10.0"
   },
   "scripts": {
+    "gh-deploy": "git subtree push --prefix dist origin gh-pages",
     "start-message": "babel-node tools/startMessage.js",
     "prestart": "npm-run-all --parallel start-message remove-dist lint:tools",
     "start": "npm-run-all --parallel  open:src",
