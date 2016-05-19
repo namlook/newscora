@@ -33,14 +33,12 @@ export default {
   ],
   resolve: {
     extensions: ['', '.js', '.jsx'],
+    // required to prevent multiple install of react
+    fallback: [path.join(__dirname, 'node_modules')],
   },
-  // resolve: {
-  //   // required to prevent multiple install of react
-  //   fallback: [path.join(__dirname, 'node_modules')],
-  // },
   // // Same issue, for loaders like babel
   // resolveLoader: {
-  //   fallback: [path.join(__dirname, 'node_modules')],
+    // fallback: [path.join(__dirname, 'node_modules')],
   // },
   module: {
     loaders: [
@@ -54,7 +52,7 @@ export default {
         test: /(\.css|\.scss)$/,
         include: [
           path.join(__dirname, 'src'),
-          path.join(__dirname, 'node_modules/odyssee-client/src/styles/styles.scss'),
+          path.join(__dirname, 'node_modules/odyssee-client/styles/styles.scss'),
           // path.join(__dirname, 'node_modules/odyssee-client/lib/styles.scss'),
           path.join(__dirname, 'node_modules/semantic-ui-css/semantic.css'),
         ],
