@@ -6,7 +6,7 @@ export default {
       type: 'record-form',
       title: 'add scores',
       fields: [
-        { name: 'participant', type: 'search', label: 'participant' },
+        { name: 'name', type: 'text', label: 'participant' },
         { name: 'score', type: 'number', label: 'score' },
       ],
       displaySubmitButtons: true,
@@ -17,6 +17,7 @@ export default {
         schema: {
           _id: 'string',
           participant: 'string',
+          name: 'string',
           score: 'number',
         },
       },

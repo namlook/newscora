@@ -22,8 +22,8 @@ export default {
         unstackable: true,
         color: 'teal',
         icon: 'users',
-        properties: ['participant', 'score'],
-        searchProperty: 'participant',
+        properties: ['name', 'score'],
+        searchProperty: 'name',
         hideIfEmpty: true,
         onClickRedirectTo: '/scores/:id/edit',
         linkedStores: {

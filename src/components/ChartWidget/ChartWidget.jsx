@@ -11,7 +11,7 @@ import ReactHighcharts from 'react-highcharts';
 class ChartWidget extends React.Component {
 
   buildHighchartsConfig(allScores) {
-    const series = allScores.groupBy((o) => o.participant)
+    const series = allScores.groupBy((o) => o.name)
       .reduce((acc, scores, participantName) => {
         let total = 0;
         return [

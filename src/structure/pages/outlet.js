@@ -30,13 +30,13 @@ export default {
       type: 'application-menu',
       color,
       items: [
-        { label: 'Participants', route: '/participants', icon: 'users' },
+        { label: 'Joueurs', route: '/participants', icon: 'users' },
         { label: 'Scores', route: '/scores', icon: 'game' },
         { label: 'Statistics', route: '', items: [
           { label: 'Hall Of Fames', route: '/statistics/hall-of-fame', icon: 'trophy' },
           { label: 'Statistics', route: '/statistics/charts', icon: 'line chart' },
         ] },
-        { label: 'Contact', route: '/contact', icon: 'user' },
+        // { label: 'Contact', route: '/contact', icon: 'user' },
       ],
     },
     {
@@ -48,10 +48,10 @@ export default {
       layout: { mobile: 16, table: 16, computer: 0 },
       color,
       items: [
-        { label: 'Participants', route: '/participants', icon: 'users' },
+        { label: 'Joueurs', route: '/participants', icon: 'users' },
         { label: 'Scores', route: '/scores', icon: 'game' },
-        { label: 'Total', route: '/statistics/hall-of-fame', icon: 'chart line' },
-        { label: 'Charts', route: '/statistics/charts', icon: 'user' },
+        { label: 'Total', route: '/statistics/hall-of-fame', icon: 'trophy' },
+        { label: 'Charts', route: '/statistics/charts', icon: 'line chart' },
       ],
     },
   ],

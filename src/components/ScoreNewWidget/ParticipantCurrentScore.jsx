@@ -11,17 +11,17 @@ class ParticipantCurrentScore extends React.Component {
     this.saveScore = this.saveScore.bind(this);
   }
 
-  scoreChange(participantName, value) {
-    this.props.currentScoreActions.update(participantName, value);
+  scoreChange(participantId, value) {
+    this.props.currentScoreActions.update(participantId, value);
   }
 
-  saveScore(e, name) {
+  saveScore(e, participantId, name) {
     e.preventDefault();
     e.stopPropagation();
-    const score = this.props.currentScoreStore.get(name);
+    const score = this.props.currentScoreStore.get(participantId);
     if (!_.isNaN(parseFloat(score))) {
-      this.props.scoresActions.addRecord({ participant: name, score });
-      this.props.currentScoreActions.clear(name);
+      this.props.scoresActions.addRecord({ participant: participantId, name, score });
+      this.props.currentScoreActions.clear(participantId);
     }
   }
 
@@ -40,9 +40,9 @@ class ParticipantCurrentScore extends React.Component {
 
   render() {
     const { participant, currentScoreStore } = this.props;
-    const currentScore = currentScoreStore.get(participant.name);
-    const total = this.totalFor(participant.name);
-    const lastScore = this.lastScoreFor(participant.name);
+    const currentScore = currentScoreStore.get(participant._id);
+    const total = this.totalFor(participant._id);
+    const lastScore = this.lastScoreFor(participant._id);
     return (
       <div key={participant._id} className="ui segment">
         <div className="ui two columns stackable grid">
@@ -56,9 +56,12 @@ class ParticipantCurrentScore extends React.Component {
             <h2 style={{ padding: 0, margin: 0 }}> {participant.name} </h2>
           </div>
           <div className="column">
-            <form className="ui form" onSubmit={(e) => this.saveScore(e, participant.name)}>
+            <form
+              className="ui form"
+              onSubmit={(e) => this.saveScore(e, participant._id, participant.name)}
+            >
               <FormField
-                name={participant.name}
+                name={participant._id}
                 type="number"
                 value={currentScore == null ? '' : currentScore}
                 placeholder={lastScore != null ? `dernier score : ${lastScore || 0}` : ''}

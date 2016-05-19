@@ -7,7 +7,7 @@ export default {
       title: 'Scores',
       icon: 'game',
       items: [
-        { label: 'create', route: '/scores/i/new', icon: 'plus' },
+        // { label: 'create', route: '/scores/i/new', icon: 'plus' },
       ],
     },
     {

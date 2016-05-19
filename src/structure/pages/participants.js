@@ -3,18 +3,6 @@ export default {
   path: 'participants',
   widgets: [
     {
-      type: 'participants-edit',
-      title: 'all the participants',
-      icon: 'users',
-      store: {
-        name: 'participants-store',
-        recordSchema: {
-          _id: '',
-          name: '',
-        },
-      },
-    },
-    {
       type: 'record-form',
       title: 'Ajouter des participants',
       icon: 'plus square outline',
@@ -45,6 +33,21 @@ export default {
       },
       linkedStores: {
         collection: 'participants-store',
+      },
+    },
+    {
+      type: 'participants-edit',
+      title: 'all the participants',
+      icon: 'users',
+      store: {
+        name: 'participants-store',
+        recordSchema: {
+          _id: '',
+          name: '',
+        },
+      },
+      linkedStores: {
+        scores: 'scores-store',
       },
     },
   ],

@@ -6,6 +6,7 @@ export default [
     recordSchema: {
       _id: '',
       participant: '',
+      name: '',
       score: '',
     },
   },

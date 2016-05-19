@@ -10,7 +10,7 @@ import _ from 'lodash';
 class HallOfFameWidget extends React.Component {
   computeTotalByParticipants() {
     const totalByParticipants = this.props.ownStore.get('content')
-      .groupBy((o) => o.participant)
+      .groupBy((o) => o.name)
       .reduce((acc, scores, participantName) => ([
         ...acc,
         {

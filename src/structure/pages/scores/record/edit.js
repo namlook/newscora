@@ -5,7 +5,7 @@ export default {
     {
       type: 'record-form',
       fields: [
-        { name: 'participant', type: 'search', label: 'participant' },
+        { name: 'name', type: 'text', disabled: true, label: 'participant' },
         { name: 'score', type: 'number', label: 'score' },
       ],
       onSaveRedirectTo: '/scores',
@@ -17,11 +17,11 @@ export default {
         schema: {
           _id: 'string',
           participant: 'string',
+          name: 'string',
           score: 'number',
         },
       },
       linkedStores: {
-        // own: 'score-store',
         collection: 'scores-store',
       },
     },

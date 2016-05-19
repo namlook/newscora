@@ -21,8 +21,18 @@ class ParticipantsEditWidget extends React.Component { // eslint-disable-line
     this.props.ownActions.moveDown(participantId);
   }
 
+  updateScores(participantId, newName) {
+    this.props.scoresStore.get('content')
+      .filter((o) => o.participant === participantId)
+      .forEach((score) => {
+        const { _id, name, ...attributes } = score.toJS(); // eslint-disable-line no-unused-vars
+        this.props.scoresActions.updateRecord(_id, { ...attributes, name: newName });
+      });
+  }
+
   rename(participantId, newName) {
     this.props.ownActions.updateRecord(participantId, { name: newName });
+    this.updateScores(participantId, newName);
   }
 
   delete(participantId) {
@@ -73,6 +83,8 @@ class ParticipantsEditWidget extends React.Component { // eslint-disable-line
 ParticipantsEditWidget.propTypes = {
   ownStore: PropTypes.object.isRequired,
   ownActions: PropTypes.object.isRequired,
+  scoresStore: PropTypes.object.isRequired,
+  scoresActions: PropTypes.object.isRequired,
 };
 
 export default ParticipantsEditWidget;
