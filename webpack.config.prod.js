@@ -7,7 +7,7 @@ const GLOBALS = {
   __DEV__: false,
 };
 
-const PUBLIC_PATH = '/';
+const PUBLIC_PATH = '/scora/';
 
 export default {
   debug: true,
