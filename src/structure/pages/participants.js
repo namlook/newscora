@@ -4,8 +4,8 @@ export default {
   widgets: [
     {
       type: 'record-form',
-      title: 'Ajouter des participants',
-      icon: 'plus square outline',
+      title: 'Ajouter un joueur',
+      icon: 'user',
       fields: [
         // {
         //   type: 'fields', fields: [
@@ -20,7 +20,7 @@ export default {
         //     { type: 'save', name: 'save', label: 'ok' },
         //   ],
         // },
-        { name: 'name', type: 'text', label: 'name' },
+        { name: 'name', type: 'text', label: 'nom' },
       ],
       // displaySubmitButtons: true,
       displaySubmitButtons: false,
@@ -37,7 +37,7 @@ export default {
     },
     {
       type: 'participants-edit',
-      title: 'all the participants',
+      title: 'Tous les joueurs',
       icon: 'users',
       store: {
         name: 'participants-store',

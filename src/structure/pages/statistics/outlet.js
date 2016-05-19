@@ -8,8 +8,8 @@ export default {
       title: 'Stats',
       icon: 'line charts',
       items: [
-        { label: 'hall of fames', route: '/statistics/hall-of-fame', icon: 'trophy' },
-        { label: 'charts', route: '/statistics/charts', icon: 'line chart' },
+        { label: 'total', route: '/statistics/hall-of-fame', icon: 'trophy' },
+        { label: 'graphiques', route: '/statistics/charts', icon: 'line chart' },
       ],
     },
     {

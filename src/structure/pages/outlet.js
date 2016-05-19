@@ -32,9 +32,9 @@ export default {
       items: [
         { label: 'Joueurs', route: '/participants', icon: 'users' },
         { label: 'Scores', route: '/scores', icon: 'game' },
-        { label: 'Statistics', route: '', items: [
-          { label: 'Hall Of Fames', route: '/statistics/hall-of-fame', icon: 'trophy' },
-          { label: 'Statistics', route: '/statistics/charts', icon: 'line chart' },
+        { label: 'Statistiques', route: '', items: [
+          { label: 'Total', route: '/statistics/hall-of-fame', icon: 'trophy' },
+          { label: 'Graphiques', route: '/statistics/charts', icon: 'line chart' },
         ] },
         // { label: 'Contact', route: '/contact', icon: 'user' },
       ],
@@ -51,7 +51,7 @@ export default {
         { label: 'Joueurs', route: '/participants', icon: 'users' },
         { label: 'Scores', route: '/scores', icon: 'game' },
         { label: 'Total', route: '/statistics/hall-of-fame', icon: 'trophy' },
-        { label: 'Charts', route: '/statistics/charts', icon: 'line chart' },
+        { label: 'Stats', route: '/statistics/charts', icon: 'line chart' },
       ],
     },
   ],
